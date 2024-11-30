@@ -1,19 +1,17 @@
-import { lazy } from "react";
-import type { RouteObject } from "react-router";
+import type { RouteObject } from 'react-router';
 
 // 路由懒加载
-const Home = lazy(() => import("@/views/Home/index"));
-const Data = lazy(() => import("@/views/Data/index"));
+import { Data, Home } from './lazy_components';
 
 const routes: RouteObject[] = [
-	{
-		path: "/",
-		element: <Home />
-	},
-	{
-		path: "/data",
-		element: <Data />
-	}
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/data',
+    element: <Data />,
+  },
 ];
 
 export default routes;

@@ -10,7 +10,7 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs', 'commitlint.config.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh','import','prettier'],
+  plugins: ['react-refresh', 'import', 'prettier'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     //import导入顺序规则
@@ -70,4 +70,4 @@ module.exports = {
     ],
     'no-debugger': 'warn', //提交时不允许有debugger
   },
-}
+};
