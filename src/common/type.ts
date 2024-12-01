@@ -5,4 +5,8 @@ interface logoListItem {
   alt: string;
 }
 
-export type { logoListItem };
+type WordData = {
+  [key in `wordData_${number}`]: { name: string; value: number }[];
+};
+
+export type { WordData, logoListItem };
