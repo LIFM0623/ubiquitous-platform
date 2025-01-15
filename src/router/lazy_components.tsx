@@ -1,8 +1,11 @@
 import { lazy } from 'react';
 
-export const Home = lazy(() => import('@/views/Home/index'));
-export const Data = lazy(() => import('@/views/Data/index'));
+const Home = lazy(() => import('@/views/Home/index'));
+const Data = lazy(() => import('@/views/Data/index'));
+const Help = lazy(() => import('@/views/Help/index'));
 // Data 子页面
-export const Source = lazy(() => import('@/views/Data/components/Source'));
-export const Collect = lazy(() => import('@/views/Data/components/Collect'));
-export const Query = lazy(() => import('@/views/Data/components/Query'));
+const Source = lazy(() => import('@/views/Data/components/Source'));
+const Collect = lazy(() => import('@/views/Data/components/Collect'));
+const Query = lazy(() => import('@/views/Data/components/Query'));
+
+export { Collect, Data, Help, Home, Query, Source };

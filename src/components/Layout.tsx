@@ -187,7 +187,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
                 <Dropdown menu={menuItems ? { items: menuItems, onClick: gotoOtherPage } : undefined} key={item.name}>
                   <div
                     className={`text-1xl relative mt-2 flex w-36 cursor-pointer items-start justify-center py-5 text-center font-medium ${
-                      item.active ? 'text-custom-tabs-yellow' : 'text-gray-500'
+                      item.active ? 'text-custom-tabs-yellow' : 'text-white'
                     }`}
                   >
                     {item.name}
@@ -206,7 +206,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
                 <div
                   onClick={() => gotoOtherPage({ key: item.id } as any)}
                   className={`text-1xl relative mt-2 flex w-36 cursor-pointer items-start justify-center py-5 text-center font-medium ${
-                    item.active ? 'text-custom-tabs-yellow' : 'text-gray-500'
+                    item.active ? 'text-custom-tabs-yellow' : 'text-white'
                   }`}
                 >
                   {item.name}

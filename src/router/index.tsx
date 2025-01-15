@@ -1,7 +1,7 @@
 import { Navigate, type RouteObject } from 'react-router';
 
 // 路由懒加载
-import { Collect, Data, Home, Query, Source } from './lazy_components';
+import { Collect, Data, Help, Home, Query, Source } from './lazy_components';
 
 const routes: RouteObject[] = [
   {
@@ -29,6 +29,10 @@ const routes: RouteObject[] = [
         element: <Query />,
       },
     ],
+  },
+  {
+    path: '/platform-help',
+    element: <Help />,
   },
 ];
 
