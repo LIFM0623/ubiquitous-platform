@@ -9,4 +9,12 @@ type WordData = {
   [key in `wordData_${number}`]: { name: string; value: number }[];
 };
 
-export type { WordData, logoListItem };
+// tabs Type
+interface tabListItem {
+  id: string;
+  name: string;
+  url?: string;
+  children?: tabListItem[];
+}
+
+export type { WordData, logoListItem, tabListItem };

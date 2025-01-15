@@ -5,7 +5,7 @@ interface IProps {
 }
 
 const Collect: React.FC<IProps> = () => {
-  return <div>Collect</div>;
+  return <div>我是数据采集</div>;
 };
 
 export default memo(Collect);
