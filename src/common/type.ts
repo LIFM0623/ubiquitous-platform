@@ -13,6 +13,7 @@ type WordData = {
 interface tabListItem {
   id: string;
   name: string;
+  active?: boolean;
   url?: string;
   children?: tabListItem[];
 }
