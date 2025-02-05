@@ -8,4 +8,12 @@ interface addDSInterface {
   file?: File; // 可选的上传文件
 }
 
-export type { addDSInterface, dsQuery };
+// ==================== DataCollect type  ================
+interface dcQuery {
+  type?: string;
+  caption?: string;
+  source?: string;
+  autor?: string;
+}
+
+export type { addDSInterface, dcQuery, dsQuery };

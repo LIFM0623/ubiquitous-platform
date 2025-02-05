@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* antd 全局样式更改 */
+:where(.css-dev-only-do-not-override-1x0dypw).ant-radio-wrapper span.ant-radio + * {
+  color: white;
+}

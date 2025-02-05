@@ -42,13 +42,14 @@ const Source: React.FC<IProps> = () => {
   useEffect(() => {
     getUrlList();
   }, [getUrlList]);
+
   return (
     <div className="h-full w-full">
       {contextHolder}
       <div className="w-full px-3">
         来源:
         <Tooltip title="新增" placement="bottom">
-          <Button shape="circle" size="small" onClick={() => setIsModalOpen(true)}>
+          <Button shape="circle" size="small" onClick={() => setIsModalOpen(true)} className="mx-2">
             +
           </Button>
         </Tooltip>

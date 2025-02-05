@@ -9,7 +9,7 @@ interface IProps {
 const Help: React.FC<IProps> = () => {
   return (
     <Layout>
-      <div className="box-border flex h-[3vh] w-full items-center px-3 italic">平台帮助</div>
+      <div className="box-border flex h-[3vh] w-full cursor-pointer items-center px-3 italic">平台帮助</div>
       <div className="scrollbar flex h-[85vh] w-full flex-wrap overflow-y-auto px-10 py-4">
         <div className="w-1/2 leading-loose">
           <span className="text-xl font-semibold">本平台致力于：</span>

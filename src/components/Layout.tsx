@@ -204,6 +204,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
             } else {
               return (
                 <div
+                  key={item.name}
                   onClick={() => gotoOtherPage({ key: item.id } as any)}
                   className={`text-1xl relative mt-2 flex w-36 cursor-pointer items-start justify-center py-5 text-center font-medium ${
                     item.active ? 'text-custom-tabs-yellow' : 'text-white'

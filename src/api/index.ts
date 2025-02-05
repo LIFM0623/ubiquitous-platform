@@ -1,5 +1,5 @@
 import { http } from './axios';
-import { addDSInterface, dsQuery } from './type/apiType';
+import { addDSInterface, dcQuery, dsQuery } from './type/apiType';
 
 // ==================== DataSource接口 ================
 export const searchDataSource = async (query?: dsQuery) => {
@@ -8,4 +8,9 @@ export const searchDataSource = async (query?: dsQuery) => {
 
 export const addDataSource = async (formData: addDSInterface) => {
   return await http.post('/dataSource/add', formData);
+};
+
+// =================== DataCollect接口 ================
+export const searchDataCollect = async (page: number, pageSize: number, query?: dcQuery) => {
+  return await http.get(`/text/crawler/query/${page}/${pageSize}`, query);
 };
