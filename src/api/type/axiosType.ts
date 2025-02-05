@@ -19,4 +19,4 @@ interface Http {
   patch<T>(url: string, data?: unknown): Promise<ResType<T>>;
 }
 
-export type { Http };
+export type { Http, ResType };

@@ -1,40 +1,26 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 
-import { Button, Modal, Tooltip } from 'antd';
+import { Button, message, Modal, Tooltip } from 'antd';
+
+import { searchDataSource } from '@/api';
+import { ResultEnum } from '@/enum/httpEnum';
 
 interface IProps {
   children?: React.ReactNode;
 }
 
+interface urlItem {
+  _id: string;
+  title: string;
+  picture: string;
+  site: string;
+}
+
 const Source: React.FC<IProps> = () => {
+  const [messageApi, contextHolder] = message.useMessage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading] = useState(false);
-  const urlList = [
-    {
-      id: 0,
-      name: '百度',
-      url: '#',
-      logo: '/public/images/logo/中国新闻网.png',
-    },
-    {
-      id: 1,
-      name: '搜狐',
-      url: '#',
-      logo: '/public/images/logo/中国经济网.png',
-    },
-    {
-      id: 2,
-      name: '字节',
-      url: '#',
-      logo: '/public/images/logo/央视新闻.png',
-    },
-    {
-      id: 3,
-      name: '网易',
-      url: '#',
-      logo: '/public/images/logo/海外网.png',
-    },
-  ];
+  const [urlList, setUrlList] = useState<urlItem[]>([]);
 
   const handleModalOk = () => {
     setIsModalOpen(false);
@@ -43,11 +29,23 @@ const Source: React.FC<IProps> = () => {
   const handleModalCancel = () => {
     setIsModalOpen(false);
   };
+  const getUrlList = useCallback(async () => {
+    const { data, code } = await searchDataSource();
+    if (code === ResultEnum.SUCCESS) {
+      setUrlList(data as urlItem[]);
+    } else {
+      messageApi.error('请求数据失败！');
+    }
+  }, [messageApi]);
 
   // 发起请求 获取数据渲染
+  useEffect(() => {
+    getUrlList();
+  }, [getUrlList]);
   return (
     <div className="h-full w-full">
-      <div className="w-full">
+      {contextHolder}
+      <div className="w-full px-3">
         来源:
         <Tooltip title="新增" placement="bottom">
           <Button shape="circle" size="small" onClick={() => setIsModalOpen(true)}>
@@ -55,13 +53,19 @@ const Source: React.FC<IProps> = () => {
           </Button>
         </Tooltip>
       </div>
-      <div className="w-full">
-        <div className="grid grid-cols-4 gap-4 border">
+      <div className="w-full px-3 py-3">
+        <div className="scrollbar flex h-[80vh] flex-wrap items-center justify-center overflow-y-auto">
           {urlList.map((item) => {
             return (
-              <div key={item.id} className="h-full w-full border">
-                <img src={item.logo} alt={item.name} />
-                {item.name}
+              <div key={item._id} className="mx-3 my-2 flex h-[11vh] w-[15vw] justify-center rounded-md border">
+                <a href={item.site} target="_blank">
+                  <img
+                    className="h-[8vh] w-[15vw] rounded-md object-cover"
+                    src={item.picture ? `/resource/${item.picture}` : '#'}
+                    alt={item.title}
+                  />
+                  <div className="w-full text-center text-2xl">{item.title}</div>
+                </a>
               </div>
             );
           })}
