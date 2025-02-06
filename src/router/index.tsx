@@ -1,7 +1,7 @@
 import { Navigate, type RouteObject } from 'react-router';
 
 // 路由懒加载
-import { Collect, Data, Help, Home, Query, Source } from './lazy_components';
+import { Collect, Data, Help, Home, Method, Query, Result, Source, Tag, Tool } from './lazy_components';
 
 const routes: RouteObject[] = [
   {
@@ -27,6 +27,28 @@ const routes: RouteObject[] = [
       {
         path: 'query',
         element: <Query />,
+      },
+    ],
+  },
+  {
+    path: '/tag',
+    element: <Tag />,
+    children: [
+      {
+        path: '',
+        element: <Navigate to="source" replace />, // 自动重定向到 /data/source
+      },
+      {
+        path: 'method',
+        element: <Method />,
+      },
+      {
+        path: 'tool',
+        element: <Tool />,
+      },
+      {
+        path: 'result',
+        element: <Result />,
       },
     ],
   },

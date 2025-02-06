@@ -48,14 +48,17 @@ const Layout: React.FC<IProps> = ({ children }) => {
         {
           id: '2-1',
           name: '标签结果',
+          url: '/tag/result',
         },
         {
           id: '2-2',
           name: '标签方法',
+          url: '/tag/method',
         },
         {
           id: '2-3',
           name: '标签工具',
+          url: '/tag/tool',
         },
       ],
     },
