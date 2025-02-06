@@ -11,6 +11,6 @@ export const addDataSource = async (formData: addDSInterface) => {
 };
 
 // =================== DataCollect接口 ================
-export const searchDataCollect = async (page: number, pageSize: number, query?: dcQuery) => {
-  return await http.get(`/text/crawler/query/${page}/${pageSize}`, query);
+export const searchDataCollect = async (url: string, page: number, pageSize: number, query?: dcQuery) => {
+  return await http.get(`/${url}/${page}/${pageSize}`, query);
 };
