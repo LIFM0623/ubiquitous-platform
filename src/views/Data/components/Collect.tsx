@@ -37,19 +37,21 @@ interface CollectItem {
 const Collect: React.FC<IProps> = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [type, setType] = useState<'text' | 'img' | 'chart' | 'map' | 'audio' | 'video'>('text');
-  const [select, setSelect] = useState<string>('source');
+  const [select, setSelect] = useState<string>(dataCollectConfig[type].searchCons[0].value);
   const [keyword, setKeyword] = useState('');
   const [tableData, setTableData] = useState<CollectItem[]>([]);
   const [totalPage, setTotalPage] = useState(0);
 
   const onRadioChange = async ({ target: { value } }: RadioChangeEvent) => {
     setType(value);
+    setSelect(dataCollectConfig[value as 'text' | 'img' | 'chart' | 'map' | 'audio' | 'video'].searchCons[0].value);
     getCollectList(dataCollectConfig[value as 'text' | 'img' | 'chart' | 'map' | 'audio' | 'video'].url, 1, 10);
   };
 
   const onSelectChange = (value: string) => {
     setSelect(value);
   };
+
   const onKeywordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value);
   };
@@ -91,11 +93,7 @@ const Collect: React.FC<IProps> = () => {
             defaultValue="lucy"
             value={select}
             style={{ width: 120 }}
-            options={[
-              { value: 'caption', label: '标题' },
-              { value: 'source', label: '来源' },
-              { value: 'author', label: '作者' },
-            ]}
+            options={dataCollectConfig[type].searchCons}
             onChange={onSelectChange}
           />
         </div>
@@ -109,7 +107,6 @@ const Collect: React.FC<IProps> = () => {
           查询
         </Button>
       </div>
-
       <div className="w-full px-3 py-3">
         <Table<CollectItem>
           columns={dataCollectConfig[type].cols}

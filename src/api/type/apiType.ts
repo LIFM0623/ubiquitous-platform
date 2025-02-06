@@ -16,4 +16,13 @@ interface dcQuery {
   autor?: string;
 }
 
-export type { addDSInterface, dcQuery, dsQuery };
+// ==================== DataQuery type  ================
+interface dqQuery {
+  id?: string;
+  description?: string;
+  content?: string;
+  source?: string;
+  recordDatetime?: string;
+}
+
+export type { addDSInterface, dcQuery, dqQuery, dsQuery };
